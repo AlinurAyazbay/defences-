@@ -1,0 +1,98 @@
+CREATE TABLE Airline_info (
+    airline_id INT PRIMARY KEY, -- primary key
+    airline_code VARCHAR(30), -- not null
+    airline_name VARCHAR(50), -- not null
+    airline_country VARCHAR(50), -- not null
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- not null
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- not null
+    info VARCHAR(50));
+
+CREATE TABLE Airport (
+    airport_id INT PRIMARY KEY,-- primary key
+    airport_name VARCHAR(50), -- not null
+    country VARCHAR(50), -- not null
+    state VARCHAR(50), -- not null
+    city VARCHAR(50), -- not null
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- not null
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP); -- not null
+
+
+CREATE TABLE Baggage_check (
+    baggage_check_id INT PRIMARY KEY,-- primary key
+    check_result VARCHAR(50), -- not null
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- not null
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- not null
+    booking_id INT, -- not null
+    passenger_id INT);
+
+
+CREATE TABLE Baggage (
+    baggage_id INT PRIMARY KEY,-- primary key
+    weight_in_kg DECIMAL(4,2), -- not null
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- not null
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- not null
+    booking_id INT);
+
+
+CREATE TABLE Boarding_pass (
+    boarding_pass_id INT PRIMARY KEY,-- primary key
+    booking_id INT, -- not null
+    seat VARCHAR(50), -- not null
+    boarding_time TIMESTAMP, -- not null
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- not null
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP); -- not null
+
+
+CREATE TABLE Booking_flight (
+    booking_flight_id INT PRIMARY KEY,-- primary key
+    booking_id INT, -- not null
+    flight_id INT, -- not null
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- not null
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP); -- not null
+
+
+CREATE TABLE Booking (
+    booking_id INT PRIMARY KEY,-- primary key
+    flight_id INT, -- not null
+    passenger_id INT, -- not null
+    booking_platform VARCHAR(50), -- not null
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- not null
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- not null
+    status VARCHAR(50), -- not null
+    price DECIMAL(7,2));
+
+
+CREATE TABLE Flights (
+    flight_id INT PRIMARY KEY,-- primary key
+    sch_departure_time TIMESTAMP, -- not null
+    sch_arrival_time TIMESTAMP, -- not null
+    departing_airport_id INT, -- not null
+    arriving_airport_id INT, -- not null
+    departing_gate VARCHAR(50), -- not null
+    arriving_gate VARCHAR(50), -- not null
+    airline_id INT, -- not null
+    act_departure_time TIMESTAMP, -- not null
+    act_arrival_time TIMESTAMP,-- not null
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,-- not null
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+
+CREATE TABLE Passengers (
+    passenger_id INT PRIMARY KEY,-- primary key
+    first_name VARCHAR(50),-- not null
+    last_name VARCHAR(50),-- not null
+    date_of_birth DATE,-- not null
+    gender VARCHAR(50),-- not null
+    country_of_citizenship VARCHAR(50),-- not null
+    country_of_residence VARCHAR(50),-- not null
+    passport_number VARCHAR(20),-- not null
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,-- not null
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+
+CREATE TABLE Security_check (
+    security_check_id INT PRIMARY KEY,-- primary key
+    check_result VARCHAR(20),-- not null
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,-- not null
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,-- not null
+    passenger_id INT);
