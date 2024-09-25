@@ -208,3 +208,8 @@ FOREIGN KEY (arriving_airport_id) REFERENCES Airport(airport_id);
 ALTER TABLE Flight
 ADD CONSTRAINT fk_flight_airline
 FOREIGN KEY (airline_id) REFERENCES Airline_info(airline_id);
+
+INSERT INTO Airport(airport_id,country,airport_name)
+values(5,'uae','fly emirates better'),
+      (1, 'Brazil','Air Easy'),
+      (2,'Poland', 'FlyFly');
