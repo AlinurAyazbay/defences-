@@ -1,0 +1,111 @@
+INSERT INTO passengers(passenger_id, first_name, last_name, gender, country_of_citizenship)
+values(105,'Akhmet','Akhmet', 'male', 'Kazakhstan'),
+      (102, 'Smith', 'Smith2', 'male', 'US'),
+      (107, 'Jenny', 'Smith2', 'female', 'US'),
+      (103, 'Habibi', 'Ibn Muhammad', 'male', 'UAE'),
+      (104, 'Sasha', 'Sasha', 'female', 'Russia'),
+      (099, 'Ramesh', 'Suresh', 'female', 'India');--just added some data for further usage
+
+
+SELECT * FROM passengers where first_name = last_name;--task1
+
+
+UPDATE passengers
+SET date_of_birth = '1990-05-12' WHERE passenger_id = 105;
+
+UPDATE passengers
+SET date_of_birth = '1985-09-23' WHERE passenger_id = 102;
+
+UPDATE passengers
+SET date_of_birth = '1992-11-05' WHERE passenger_id = 103;
+
+UPDATE passengers
+SET date_of_birth = '1988-02-17' WHERE passenger_id = 104;
+
+UPDATE passengers
+SET date_of_birth = '1975-07-30' WHERE passenger_id = 99;
+
+
+UPDATE passengers
+SET date_of_birth = '2006-07-24' WHERE passenger_id = 107;   -- also needed for further task
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT DISTINCT last_name
+FROM passengers;
+
+
+
+SELECT *
+FROM passengers
+WHERE gender = 'male'
+AND date_of_birth BETWEEN '1990-01-01' AND '2000-12-31';
+
+
+SELECT MONTH(sale_date) AS month, SUM(price) AS total_sales
+FROM tickets
+GROUP BY MONTH(sale_date)
+ORDER BY MONTH(sale_date);
+
+
+SELECT *
+FROM flights
+WHERE destination = 'China';
+
+
+SELECT airline_name
+FROM airlines
+WHERE country = 'Kazakhstan';
+
+
+UPDATE bookings
+SET price = price * 0.9
+WHERE booking_date < '2010-12-12';
+
+
+SELECT *
+FROM baggage
+WHERE weight > 25
+ORDER BY weight DESC
+LIMIT 3;
+
+
+SELECT first_name, last_name
+FROM passengers
+ORDER BY date_of_birth DESC
+LIMIT 1;
+
+
+
+SELECT platform, MIN(price) AS cheapest_price
+FROM bookings
+GROUP BY platform;
+
+
+
+
